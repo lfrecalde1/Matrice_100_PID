@@ -516,14 +516,13 @@ if __name__ == '__main__':
         while True:
             condicion = axes[5]
             if condicion == -4545.0:
-                main(velocity_publisher)
                 print("Run")
+                main(velocity_publisher)
             else:
                 print("No Run")
+                ref_drone = TwistStamped()
+                init_system(velocity_publisher, ref_drone, velocity_z = 0.0)
                 None
-
-
-
 
     except(rospy.ROSInterruptException, KeyboardInterrupt):
         print("Error System")
