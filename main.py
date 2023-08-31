@@ -189,6 +189,11 @@ def init_system(control_pub, ref_drone, velocity_z):
     vz_c = np.array([[0.0], [0.0], [0.0]])
     for k in range(0, 450):
         tic = time.time()
+        condicion = axes[5]
+        if condicion == -4545.0:
+            None
+        else:
+            break
         # Get system velocites Respect to W frame
         velocities = get_system_velocity_sensor()
 
@@ -228,6 +233,11 @@ def init_system_z(control_pub, ref_drone, k1, k2):
 
     for k in range(0, 450):
         tic = time.time()
+        condicion = axes[5]
+        if condicion == -4545.0:
+            None
+        else:
+            break
         # Get system velocites Respect to W frame
         pose = get_system_states_sensor()
         velocities = get_system_velocity_sensor()
@@ -410,7 +420,7 @@ def main(control_pub):
     experiment_number = 5
 
     # Initialization of the system in order to establish a proper communication and set the velocities
-    init_system(control_pub, ref_drone, velocity_z=4.0)
+    init_system(control_pub, ref_drone, velocity_z=2.0)
 
     # Set the values of the initial conditions of the system
     h[:, 0] = get_system_states_sensor()
@@ -428,6 +438,11 @@ def main(control_pub):
     # Simulation Data
     for k in range(0, t.shape[0]):
         tic = time.time()
+        condicion = axes[5]
+        if condicion == -4545.0:
+            None
+        else:
+            break
         ## Get valalues RC or Desired Signal
         hdp[:, k], rdp[:, k] = get_values_rc(hdp[:, k], rdp[:, k])
 
@@ -502,9 +517,10 @@ if __name__ == '__main__':
             condicion = axes[5]
             if condicion == -4545.0:
                 main(velocity_publisher)
+                print("Run")
             else:
+                print("No Run")
                 None
-                break
 
 
 
