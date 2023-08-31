@@ -521,7 +521,8 @@ if __name__ == '__main__':
             else:
                 print("No Run")
                 ref_drone = TwistStamped()
-                init_system(velocity_publisher, ref_drone, velocity_z = 0.0)
+                ref_drone = get_reference([5, 0, 0, 0], ref_drone)
+                send_reference(ref_drone, velocity_publisher)
                 None
 
     except(rospy.ROSInterruptException, KeyboardInterrupt):
