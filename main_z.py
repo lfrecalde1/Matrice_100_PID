@@ -126,7 +126,7 @@ def get_values_rc_f():
         auxiliar = axes[3]
 
     if condicion  == -4545.0:
-        inter = interp1d([0, 1], [5, 40])
+        inter = interp1d([0, 1], [20, 40])
         xref_un = inter(auxiliar)
     elif condicion == -10000.0:        
         xref_un = 0
@@ -260,6 +260,6 @@ if __name__ == '__main__':
     else:
         print("Complete Execution")
         ref_drone = TwistStamped()
-        ref_drone = get_reference([5, 0, 0, 0], ref_drone)
+        ref_drone = get_reference([0, 0, 0, 0], ref_drone)
         send_reference(ref_drone, velocity_publisher)
         pass
