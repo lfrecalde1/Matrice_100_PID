@@ -139,7 +139,7 @@ def main(control_pub):
     ref_drone = TwistStamped()
 
     # Simulation time parameters
-    tf = 350
+    tf = 250
     t = np.arange(0, tf+ts, ts, dtype=np.double)
 
     # COntrol gains
