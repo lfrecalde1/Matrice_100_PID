@@ -254,7 +254,7 @@ if __name__ == '__main__':
     except(rospy.ROSInterruptException, KeyboardInterrupt):
         print("Error System")
         ref_drone = TwistStamped()
-        ref_drone = get_reference([5, 0, 0, 0], ref_drone)
+        ref_drone = get_reference([0, 0, 0, 0], ref_drone)
         send_reference(ref_drone, velocity_publisher)
         pass
     else:
