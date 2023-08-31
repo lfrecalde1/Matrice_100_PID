@@ -129,7 +129,7 @@ def controller_attitude_pitch(qdp, qp, ts, v_c):
     xp = velocity[0]
 
     # PID controller for lateral velocity y
-    pitch_d, v_c = pid(xpd, xp, v_c, 0.15, 0.0, 0.001, ts)
+    pitch_d, v_c = pid(xpd, xp, v_c, 0.12, 0.0, 0.001, ts)
     return pitch_d, v_c
 
 def controller_attitude_roll(qdp, qp, ts, v_c):
@@ -161,7 +161,7 @@ def controller_attitude_roll(qdp, qp, ts, v_c):
     #yp = np.cos(theta)*v_body[1]
     yp = velocity[1]
 
-    roll_d, v_c = pid(ypd, yp, v_c, 0.15, 0.0, 0.001, ts)
+    roll_d, v_c = pid(ypd, yp, v_c, 0.12, 0.0, 0.001, ts)
     return -roll_d, v_c
 
 def inverse_kinematics_controller(hd, h, k1, k2):
