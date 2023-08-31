@@ -28,7 +28,7 @@ wzd = 0.0
 # Global control action
 u_global = 0
 # System Parameters
-mass = 3.80
+mass = 3.2
 gravity = 9.81
 ts = 0.02
 
