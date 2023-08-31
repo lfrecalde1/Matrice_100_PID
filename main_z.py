@@ -126,7 +126,7 @@ def get_values_rc_f():
         auxiliar = axes[3]
 
     if condicion  == -4545.0:
-        inter = interp1d([0, 1], [10, 40])
+        inter = interp1d([0, 1], [5, 40])
         xref_un = inter(auxiliar)
     elif condicion == -10000.0:        
         xref_un = 0
