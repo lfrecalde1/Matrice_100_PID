@@ -139,7 +139,7 @@ def main(control_pub):
     ref_drone = TwistStamped()
 
     # Simulation time parameters
-    tf = 60
+    tf = 350
     t = np.arange(0, tf+ts, ts, dtype=np.double)
 
     # COntrol gains
@@ -254,12 +254,12 @@ if __name__ == '__main__':
     except(rospy.ROSInterruptException, KeyboardInterrupt):
         print("Error System")
         ref_drone = TwistStamped()
-        ref_drone = get_reference([0, 0, 0, 0], ref_drone)
+        ref_drone = get_reference([5, 0, 0, 0], ref_drone)
         send_reference(ref_drone, velocity_publisher)
         pass
     else:
         print("Complete Execution")
         ref_drone = TwistStamped()
-        ref_drone = get_reference([0, 0, 0, 0], ref_drone)
+        ref_drone = get_reference([5, 0, 0, 0], ref_drone)
         send_reference(ref_drone, velocity_publisher)
         pass
