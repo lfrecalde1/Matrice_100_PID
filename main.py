@@ -33,6 +33,8 @@ ts = 0.02
 
 ## Global rc
 axes = [0, 0, 0, 0, 0, 0]
+
+flag_system = 0
 def rc_callback(data):
     # Extraer los datos individuales del mensaje
     global axes
@@ -187,7 +189,7 @@ def init_system(control_pub, ref_drone, velocity_z):
     vx_c = np.array([[0.0], [0.0], [0.0]])
     vy_c = np.array([[0.0], [0.0], [0.0]])
     vz_c = np.array([[0.0], [0.0], [0.0]])
-    for k in range(0, 450):
+    for k in range(0, 350):
         tic = time.time()
         condicion = axes[5]
         if condicion == -10000.0:
@@ -231,7 +233,7 @@ def init_system_z(control_pub, ref_drone, k1, k2):
     # Rad actual value angle in order to avoid problems of initial rotations
     hd[3, 0] = pose[9]
 
-    for k in range(0, 450):
+    for k in range(0, 350):
         tic = time.time()
         condicion = axes[5]
         if condicion == -10000.0:
@@ -368,9 +370,10 @@ def get_values_rc(hdp, rdp):
     return np.array([xref_ul, xref_um, xref_un], dtype=np.double), np.array([xref_wx, xref_wy, xref_wz], dtype=np.double)
 
 def main(control_pub):
-    global massm, gravity, ts
+    global massm, gravity, ts, flag_system
     # Definition Twist message in order to control the system
     ref_drone = TwistStamped()
+    flag_system = 1
 
     # Simulation time parameters
     tf = 60
@@ -513,7 +516,7 @@ if __name__ == '__main__':
         RC_sub = rospy.Subscriber("/dji_sdk/rc", Joy, rc_callback, queue_size=10)
 
 
-        while True:
+        while True and flag_system == 0:
             condicion = axes[5]
             if condicion == -10000.0:
                 print("Run")
