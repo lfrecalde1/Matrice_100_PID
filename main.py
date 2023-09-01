@@ -190,7 +190,7 @@ def init_system(control_pub, ref_drone, velocity_z):
     for k in range(0, 450):
         tic = time.time()
         condicion = axes[5]
-        if condicion == -4545.0:
+        if condicion == -10000.0:
             None
         else:
             break
@@ -234,7 +234,7 @@ def init_system_z(control_pub, ref_drone, k1, k2):
     for k in range(0, 450):
         tic = time.time()
         condicion = axes[5]
-        if condicion == -4545.0:
+        if condicion == -10000.0:
             None
         else:
             break
@@ -344,14 +344,14 @@ def odometry_call_back(odom_msg):
 def get_values_rc(hdp, rdp):
     # This Function read the commands od the RC controller or the internal desired values
     condicion = axes[5]
-    if condicion  == -4545.0:
+    if condicion  == -10000.0:
         xref_ul = axes[0]
         xref_um = axes[1]
         xref_un = 2*axes[3]
         xref_wx = 0
         xref_wy = 0
         xref_wz = axes[2]
-    elif condicion == -10000.0:        
+    elif condicion == -4545.0:        
         xref_ul = hdp[0]
         xref_um = hdp[1]
         xref_un = hdp[2]
@@ -439,7 +439,7 @@ def main(control_pub):
     for k in range(0, t.shape[0]):
         tic = time.time()
         condicion = axes[5]
-        if condicion == -4545.0:
+        if condicion == -10000.0:
             None
         else:
             break
@@ -515,7 +515,7 @@ if __name__ == '__main__':
 
         while True:
             condicion = axes[5]
-            if condicion == -4545.0:
+            if condicion == -10000.0:
                 print("Run")
                 main(velocity_publisher)
             else:
